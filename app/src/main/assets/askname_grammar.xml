@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- &lt; stays for < -->
+<!-- &gt; stays for > -->
+<!--  see also http://www.w3schools.com/html/html_entities.asp -->
+<root>
+    <rule name="ask_name">
+        <preamble>
+            <item>I don't think I understood what you mean...</item>
+        </preamble>
+        <prompt>
+            <item> What's your name?</item>
+            <item> Could you tell me your name?</item>
+        </prompt>
+        <regex>My name is (?&lt;name§&gt;.*)</regex>
+        <msg>
+            <item>Nice to meet you #name#!</item>
+            <item>Welcome #name#!</item>
+        </msg>
+    </rule>
+</root>

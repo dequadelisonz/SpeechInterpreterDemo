@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- &lt; stays for < -->
+<!-- &gt; stays for > -->
+<!--  see also http://www.w3schools.com/html/html_entities.asp -->
+<root>
+    <rule name="calculator_inquiry">
+        <prompt>
+            <item>calculation that you want to run?</item>
+            <item>What should I calculate?</item>
+        </prompt>
+        <regex>(what is|figures|It calculates how much is|calculate how much is|calculate)(?&lt;first%&gt;[ a-z0-9,\\.]*)?(?&lt;operator%&gt; multiplied| multiplied by| divided| divided by| plus| minus)(?&lt;second%&gt;[ a-z0-9,\\.]*)?</regex>
+        <msg>
+            <item>I can not figure it!</item>
+            <item>For now I can perform addition, subtraction, multiplication and division!
+            </item>
+        </msg>
+    </rule>
+    <rule name="first" browsable="false">
+        <prompt>
+            <item>what is the first value?</item>
+        </prompt>
+        <regex>(?:the first (?:value )?is )?(?&lt;first%&gt;[a-z0-9,\\.]*)</regex>
+    </rule>
+    <rule name="second" browsable="false">
+        <prompt>
+            <item>what is the second value?</item>
+        </prompt>
+        <regex>(?:the second (?:value )?is )?(?&lt;second%&gt;[a-z0-9,\\.]*)</regex>
+    </rule>
+    <rule name="operator" browsable="false">
+        <prompt>
+            <item>which operation you want to do?</item>
+            <item>which operation you want to do? For now I can perform addition, subtraction,
+                multiplication and division!
+            </item>
+        </prompt>
+        <regex>(?:perform |calculates |make )?(?:the )?(?&lt;operator%&gt;?:(sum|addition|subtraction|multiplication|multiplication by|product|product by|division|division by)|(?:\w*))</regex>
+    </rule>
+    <rule name="zero_divide" browsable="false">
+        <msg>
+            <item>I'm sorry but the result does not exist!</item>
+            <item>Division by zero has no result!</item>
+            <item>Sorry, but in this part of the universe it does not make sense!</item>
+        </msg>
+    </rule>
+</root>

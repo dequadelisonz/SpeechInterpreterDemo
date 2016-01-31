@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- &lt; stays for < -->
+<!-- &gt; stays for > -->
+<!--  see also http://www.w3schools.com/html/html_entities.asp -->
+<root>
+    <rule name="greeting">
+        <regex>(?&lt;greet§&gt;Hello|Hi|Good morning|good afternoon|good evening|good night)</regex>
+        <msg>
+            <item>#greet#!@ask_status</item>
+        </msg>
+    </rule>
+
+    <rule name="greeting2">
+        <regex>(Hello|Hi)?[ ,]*(what's up|how are you( doing)?)( today)?\??</regex>
+        <msg>
+            <item>Fine thanks! @ask_status</item>
+            <item>Well but a little bit annoyed! @chat</item>
+        </msg>
+    </rule>
+
+    <rule name="i_feel">
+        <regex>.*((?&lt;!how can )i feel)(?&lt;how_feel&gt;.*)</regex>
+        <msg>
+            <item>Tell me more about this feeling</item>
+            <item>Do you often feel #how_feel# ?</item>
+        </msg>
+    </rule>
+    <rule name="how_can_i">
+        <regex>.*(how can i)(?&lt;how_can_i&gt;.*)</regex>
+        <msg>
+            <item>Did you never try?</item>
+            <item>Why you shouldn't be able to #how_can_i# ?</item>
+            <item>Actually you are creating a barrier when you ask if you can #how_can_i#</item>
+        </msg>
+    </rule>
+
+    <rule name="ask_status" browsable="false">
+        <preamble>
+            <item>I didn't get it...</item>
+            <item>I don't think I understood what you said...</item>
+        </preamble>
+        <prompt>
+            <item>How are you?</item>
+            <item>How are you doing today?</item>
+        </prompt>
+        <regex>(?&lt;how&gt;(quite )?fine|well|good|not bad|bad|good shape|bad shape|.*?)( thanks| thank you)?!?</regex>
+        <msggroup  key="how">
+            <msg>
+                <item>It's funny to hear that you are #how#! @chat</item>
+            </msg>
+            <msg key="fine">
+                <item>Nice to hear you are fine!</item>
+                <item>OK this is a good news!</item>
+                <item>Good!@chat</item>
+                <item>Very good!</item>
+                <item>Happy to know this!</item>
+            </msg>
+            <msg key="well">
+                <item>Good to hear you are well!</item>
+            </msg>
+            <msg key="good">
+                <item>Nice to hear you are good!</item>
+            </msg>
+            <msg key="not bad">
+                <item>Nice to hear you are not bad!</item>
+            </msg>
+            <msg key="bad">
+                <item>Why are you bad! @chat</item>
+            </msg>
+            <msg key="good shape">
+                <item>I'm glad you are in good shape!</item>
+            </msg>
+            <msg key="bad shape">
+                <item>Why the hell you are in bad shape? @chat</item>
+            </msg>
+        </msggroup>
+    </rule>
+
+    <rule name="chat" browsable="false">
+        <preamble>
+            <item>I didn't get it...</item>
+            <item>I don't think I understood what you said...</item>
+        </preamble>
+        <prompt>
+            <item>Do you want to chat about something?</item>
+            <item>Do you want to ask me something?</item>
+        </prompt>
+        <regex>(?&lt;yesno&gt;yes|no)?(.*?(?&lt;what&gt;m[ae]n|wom[ae]n|sex|life|animals?)|(.*my name is (?&lt;name§&gt;.*))|(?:.*))
+        </regex>
+        <msggroup>
+            <msg>
+                <item>I'm sorry but I'm still not ready to talk about this matter!</item>
+                <item>Mmmh...I don't like too much this argument. Let's talk about something else!
+                </item>
+            </msg>
+        </msggroup>
+        <msggroup key="yesno,what"> <!-->in case of the input is "yes, what about men?"<-->
+            <msg key="yes,man">
+                <item>@men</item>
+            </msg>
+            <msg key="yes,men">
+                <item>@men</item>
+            </msg>
+            <msg key="yes,woman">
+                <item>@women</item>
+            </msg>
+            <msg key="yes,women">
+                <item>@women</item>
+            </msg>
+            <msg key="yes,sex">
+                <item>@sex</item>
+            </msg>
+            <msg key="yes,life">
+                <item>@life</item>
+            </msg>
+            <msg key="yes,animals">
+                <item>@animals</item>
+            </msg>
+        </msggroup>
+        <msggroup key="what"> <!-->in case of the input is "what about men?"<-->
+            <msg key="man">
+                <item>@men</item>
+            </msg>
+            <msg key="men">
+                <item>@men</item>
+            </msg>
+            <msg key="woman">
+                <item>@women</item>
+            </msg>
+            <msg key="women">
+                <item>@women</item>
+            </msg>
+            <msg key="sex">
+                <item>@sex</item>
+            </msg>
+            <msg key="life">
+                <item>@life</item>
+            </msg>
+            <msg key="animals">
+                <item>@animals</item>
+            </msg>
+            <msg>
+                <item>I'm sorry but I'm still not ready to talk about this matter1!</item>
+                <item>Mmmh...I don't like too much this argument. Let's talk about something else1!
+                </item>
+            </msg>
+        </msggroup>
+        <msggroup key="yesno">
+            <msg key="yes">
+                <item>Ok let's talk!</item>
+            </msg>
+            <msg key="no">
+                <item>OK, see you next time</item>
+            </msg>
+        </msggroup>
+        <msggroup key="yesno,name">
+            <msg key="yes,name">
+                <item>Nice to meet you #name#!</item>
+            </msg>
+            <msg key="no,name">
+                <item>Welcome #name#!</item>
+            </msg>
+        </msggroup>
+    </rule>
+
+    <rule name="men" browsable="false">
+        <msg>
+            <item>Men are mythological beings. Half men and half idiot.</item>
+            <item>Men are like the Bluetooth connection, when you are next to them, remain connected, but when you are away, look for new devices.
+            </item>
+            <item>Every man loves two women: one is created from his imagination, the other is not yet born.
+            </item>
+            <item>Coco Chanel said that a man can wear what he wants. Will always be a woman accessory.
+            </item>
+            <item>Men are like horoscopes. They tell you what to do. And usually always wrong.
+            </item>
+        </msg>
+    </rule>
+
+    <rule name="women" browsable="false">
+        <msg>
+            <item>The worst thing you can do to a woman is close to a room with a thousand hats and even a mirror.</item>
+            <item>The five minutes of a woman are like dog years: they have to multiply by seven!</item>
+            <item>On the sixth day God created man. Then he created woman. Then he created the man again, that the other had escaped.</item>
+            <item>The man will have discovered fire, but women discovered how to play.</item>
+            <item>Women remember everything. What they do not remember him invent.</item>
+        </msg>
+    </rule>
+    <rule name="sex" browsable="false">
+        <msg>
+            <item>Do you like sex?</item>
+        </msg>
+    </rule>
+    <rule name="life" browsable="false">
+        <msg>
+            <item>Do you like life?</item>
+        </msg>
+    </rule>
+    <rule name="animals" browsable="false">
+        <msg>
+            <item>Do you like animals?</item>
+        </msg>
+    </rule>
+</root>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- &lt; stays for < -->
+<!-- &gt; stays for > -->
+<!--  see also http://www.w3schools.com/html/html_entities.asp -->
+<root>
+    <rule name="not_understood" browsable="false">
+        <msg>
+            <item>I'm sorry but I do not understand!</item>
+            <item>I can not understand, try to repeat better!</item>
+            <item>I'm afraid I do not understand ...</item>
+        </msg>
+    </rule>
+
+    <rule name="common_prompt" browsable="false">
+        <prompt>
+            <item>Tell me!</item>
+            <item>What's up?</item>
+            <item>Here I am!</item>
+            <item>What can I do for you?</item>
+            <item>Ugh! What do you want? I'm busy!</item>
+        </prompt>
+        <regex>.*</regex>
+    </rule>
+
+    <rule name="leave_greeting" browsable="false">
+        <msg>
+            <item>See you soon!</item>
+            <item>Ciao!</item>
+            <item>See you!</item>
+            <item>Bye!</item>
+        </msg>
+    </rule>
+
+    <rule name="quit">
+        <regex>quit</regex>
+        <msg>
+            <item>ok! I'll forget about it!</item>
+        </msg>
+    </rule>
+</root>
