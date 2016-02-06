@@ -1,16 +1,14 @@
-[TOC]
-
 ## INTRODUCTION
-SpeechInterpreterLib (**SIL**) is a Java library for Android that allows you to manage the dialogue between user and an Android app through a natural language.
+SpeechInterpreterLib (**SIL** Speech Interpreter Lib) is a Java library for Android that allows you to manage the dialogue between user and an Android app through a natural language. It interprets the speech from the user to retrieve input information or just to make conversation.
 
-You can :
+With SIL you can :
 * issue commands
 * ask information
 * receive notices or warnings
 * .... or simply talk!
 
 Dialogues can be managed both in text and in voice format (ongoing development at the moment).
-The speech recognition takes place via the rules defined in a series of XML file defined as **grammars**, each grammar is associated with a class extended from the **BaseResponseParser** class that performs most of the work for the recognition of the phrase input and provides available output required to perform the wanted task.
+The speech recognition takes place via the rules defined in a series of XML file defined as **grammars**, each grammar is associated with a class extended from the **BaseResponseParser** class that performs most of the work for the recognition of the phrase input and provides available output required to perform the wanted task. 
 In any grammar, as well as the recognition of the sentence input to generate an output message, you can make sure to retrieve specific data that can later be used for further processing.
 For example, if the user imputes a phrase like **"My name is Jack"** you can retrieve the word **"Jack"** in order to be used as a variable in the code of the app. Or in a sentence like **"Navigate to Rome"** the word **"Rome"** can be used as the destination in the calculation of a navigation route, and so on!
 
@@ -57,7 +55,7 @@ Every grammar basically follows this structure:
 			<item>A first message</item>
 			<item>A second message</item>
 			<item>...other messages...</item>
-		<msg>
+		<msg>	
 	</rule>
 	<rule name="ruleB">
 	.......
@@ -132,7 +130,7 @@ public class AsknameResponseParser extends BaseResponseParser {
 
 }
 ```
-The basic structure of the parser class is very simple: the two only method that need to be overridden are the constructor and the ```processResponse()``` methods.
+The basic structure of the parser class is very simple: the two only method that need to be overridden are the constructor and the ```processResponse()``` methods. 
 The constructor is supposed to throw exceptions if something goes wrong when the grammar file is read from the assets folder, there is a problem with XML parsing or simply the grammar file does not exist.
 Also, a final static field shall be initialized:
 
@@ -455,7 +453,7 @@ It is also necessary to tell SIL how to end the dialogue through the method `set
     public static final String END_OF_PROMPT
     public static final String END_OF_SPEAK
 ```
-
+    
 In a pure text application like this is not so important which value to set, but it will be important when using SIL with speech recognition, in order to stop recognition after SIL answer (END_OF_SPEAK) or to continue recognition after a prompt (END_OF_PROMPT).
 
 Here's the code snippet to add in **MainActivity** `onCreate()` method, to register the `CalculatorResponseParser` class:
@@ -464,7 +462,7 @@ Here's the code snippet to add in **MainActivity** `onCreate()` method, to regis
 
 ###<a name="the-processresponse-method"></a>The processResponse() method
 As explained before, this is the method to override to process the results parsed by SIL.
-It is not necessary to call the super class method, but it is helpful if you need to have a pre-processing to get an answer message chosen by mean of result groups collected, as seen in the ([AsknameResponseParser](#a-first-simple-example)).
+It is not necessary to call the super class method, but it is helpful if you need to have a pre-processing to get an answer message chosen by mean of result groups collected, as seen in the ([AsknameResponseParser](#a-first-simple-example)). 
 
 This method shall return a boolean value:
 
@@ -906,7 +904,7 @@ Every app using SIL shall define a custom XML grammar for  the CommonResponsePar
             <item>Bye!</item>
         </msg>
     </rule>
-
+    
     <rule name="not_understood" browsable="false">
         <msg>
             <item>I'm sorry but I do not understand!</item>
@@ -914,7 +912,7 @@ Every app using SIL shall define a custom XML grammar for  the CommonResponsePar
             <item>I'm afraid I do not understand ...</item>
         </msg>
     </rule>
-
+    
     <rule name="quit">
         <regex>quit</regex>
         <msg>
@@ -942,5 +940,3 @@ _____________________
 As we saw SIL can be a quite powerful and flexible interpreter to parse spoken language.
 A good part of its power is due to the mechanism of the regex that allows us to capture many variations and nuances, that's why it is very important to master the regex syntax.
 Also the `<msggroup>` and `<msg>` tags system with their `key` attribute allows good flexibility in guiding SIL to give always the proper response to the user, without playing at all with Java code.
-
-
