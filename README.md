@@ -1,7 +1,7 @@
 ## INTRODUCTION
-SpeechInterpreterLib (**SIL**) is a Java library for Android that allows you to manage the dialogue between user and an Android app through a natural language.
+SpeechInterpreterLib (**SIL** Speech Interpreter Lib) is a Java library for Android that allows you to manage the dialogue between user and an Android app through a natural language. It interprets the speech from the user to retrieve input information or just to make conversation.
 
-You can :
+With SIL you can :
 * issue commands
 * ask information
 * receive notices or warnings
